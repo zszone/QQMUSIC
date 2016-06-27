@@ -80,14 +80,9 @@
                                         </constraints>
                                         <state key="normal" image="player_btn_pause_normal"/>
                                         <state key="selected" image="player_btn_play_normal"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKA-a0-5El" userLabel="下一首">
-                                        <rect key="frame" x="362" y="66" width="64" height="64"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="mPa-fy-4rP"/>
-                                            <constraint firstAttribute="height" constant="64" id="v6Y-L1-scA"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="player_btn_next_normal"/>
+                                        <connections>
+                                            <action selector="playOrPauseBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="diI-DW-STd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcH-OD-yex" userLabel="上一首">
                                         <rect key="frame" x="174" y="66" width="64" height="64"/>
@@ -96,13 +91,34 @@
                                             <constraint firstAttribute="width" constant="64" id="IaF-oa-byw"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="player_btn_pre_normal"/>
+                                        <connections>
+                                            <action selector="previousMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FaR-o4-fLA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKA-a0-5El" userLabel="下一首">
+                                        <rect key="frame" x="362" y="66" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="mPa-fy-4rP"/>
+                                            <constraint firstAttribute="height" constant="64" id="v6Y-L1-scA"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="player_btn_next_normal"/>
+                                        <connections>
+                                            <action selector="nextMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGn-tB-iJN"/>
+                                        </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SUW-Y7-pNi">
                                         <rect key="frame" x="58" y="10" width="484" height="31"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="yTx-Hu-VlQ"/>
                                         </constraints>
                                         <color key="minimumTrackTintColor" red="0.17647058823529413" green="0.72549019607843135" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="sliderTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="LUO-V7-jKf"/>
+                                            <action selector="sliderTouchupInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oJn-rL-ebJ"/>
+                                            <action selector="sliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="jWU-Qp-wTg"/>
+                                            <outletCollection property="gestureRecognizers" destination="ude-jQ-fcc" appends="YES" id="9Cf-M6-Ujm"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-68-wVq">
                                         <rect key="frame" x="10" y="18" width="39" height="17"/>
@@ -152,11 +168,17 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在天边星术..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxt-zj-yks">
-                                <rect key="frame" x="250.5" y="392" width="99" height="21"/>
+                                <rect key="frame" x="250" y="392" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ad-Se-yOB" customClass="LrcScrollView" customModule="QQMusic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="100" width="600" height="340"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dsE-yq-55T"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="u7C-pR-mSL" secondAttribute="trailing" id="2NF-Iv-AVZ"/>
@@ -165,10 +187,14 @@
                             <constraint firstItem="3nb-jG-gZl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Vv-uj-s9l"/>
                             <constraint firstItem="xxt-zj-yks" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8BB-CM-t0G"/>
                             <constraint firstAttribute="trailing" secondItem="3nb-jG-gZl" secondAttribute="trailing" id="8y3-VL-id8"/>
+                            <constraint firstItem="2Ad-Se-yOB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9zy-J4-UrJ"/>
                             <constraint firstItem="bK0-5T-8dQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D3Q-YM-dLk"/>
                             <constraint firstAttribute="trailing" secondItem="uDu-SI-D6e" secondAttribute="trailing" id="Dr6-zo-5c0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3nb-jG-gZl" secondAttribute="bottom" id="GIm-5R-hFN"/>
+                            <constraint firstItem="2Ad-Se-yOB" firstAttribute="top" secondItem="u7C-pR-mSL" secondAttribute="bottom" id="HfZ-bI-vgg"/>
+                            <constraint firstAttribute="trailing" secondItem="2Ad-Se-yOB" secondAttribute="trailing" id="I7D-ed-iqn"/>
                             <constraint firstItem="bK0-5T-8dQ" firstAttribute="top" secondItem="u7C-pR-mSL" secondAttribute="bottom" constant="30" id="MgQ-OT-3o8"/>
+                            <constraint firstItem="uDu-SI-D6e" firstAttribute="top" secondItem="2Ad-Se-yOB" secondAttribute="bottom" id="NdS-mu-Shz"/>
                             <constraint firstAttribute="bottom" secondItem="3nb-jG-gZl" secondAttribute="bottom" id="Ofg-RD-OZs"/>
                             <constraint firstItem="yxN-Qo-K1C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QS7-XW-R1G"/>
                             <constraint firstItem="u7C-pR-mSL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RGs-AJ-v1f"/>
@@ -194,13 +220,25 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bgImageView" destination="3nb-jG-gZl" id="6Rj-IZ-BSE"/>
+                        <outlet property="currentTimeLabel" destination="Xdg-68-wVq" id="sx6-74-a1N"/>
                         <outlet property="iconView" destination="bK0-5T-8dQ" id="TnK-Md-JVg"/>
+                        <outlet property="lrcLabel" destination="xxt-zj-yks" id="y5h-0V-cd5"/>
+                        <outlet property="lrcScrollView" destination="2Ad-Se-yOB" id="VhV-DZ-nxr"/>
                         <outlet property="progressView" destination="SUW-Y7-pNi" id="EMj-fe-qrM"/>
+                        <outlet property="singerLabel" destination="b2I-er-SmT" id="Tad-zQ-tjT"/>
+                        <outlet property="songLabel" destination="wW0-q0-krn" id="SSV-wU-aLs"/>
+                        <outlet property="totalTimeLabel" destination="gVL-rs-v8b" id="GXE-r3-yUC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ude-jQ-fcc">
+                    <connections>
+                        <action selector="sliderClick:" destination="BYZ-38-t0r" id="ixl-lc-I8w"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="236" y="220"/>
+            <point key="canvasLocation" x="176" y="193"/>
         </scene>
     </scenes>
     <resources>

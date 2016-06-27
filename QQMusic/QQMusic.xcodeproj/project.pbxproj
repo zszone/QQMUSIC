@@ -53,6 +53,15 @@
 		E060E2FD1D1C1679009CFC06 /* 339744.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E060E2D41D1C1679009CFC06 /* 339744.mp3 */; };
 		E060E2FE1D1C1679009CFC06 /* Musics.plist in Resources */ = {isa = PBXBuildFile; fileRef = E060E2D51D1C1679009CFC06 /* Musics.plist */; };
 		E060E3001D1C24AD009CFC06 /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E2FF1D1C24AD009CFC06 /* PlayingViewController.swift */; };
+		E060E3021D1C2E98009CFC06 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E3011D1C2E98009CFC06 /* MusicModel.swift */; };
+		E060E3041D1C31E7009CFC06 /* MusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E3031D1C31E7009CFC06 /* MusicTool.swift */; };
+		E060E3061D1C40BC009CFC06 /* MusicPlayerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E3051D1C40BC009CFC06 /* MusicPlayerTool.swift */; };
+		E060E3081D1D912E009CFC06 /* CALayer-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E3071D1D912E009CFC06 /* CALayer-Extension.swift */; };
+		E060E30A1D1E6E59009CFC06 /* LrcScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E3091D1E6E59009CFC06 /* LrcScrollView.swift */; };
+		E060E30C1D1E7A9F009CFC06 /* Lrcline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E30B1D1E7A9F009CFC06 /* Lrcline.swift */; };
+		E060E30E1D1E829C009CFC06 /* LrcTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E30D1D1E829C009CFC06 /* LrcTool.swift */; };
+		E060E3101D201F79009CFC06 /* LrcViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E30F1D201F79009CFC06 /* LrcViewCell.swift */; };
+		E060E3121D201FEF009CFC06 /* LrcLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060E3111D201FEF009CFC06 /* LrcLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +112,16 @@
 		E060E2D31D1C1679009CFC06 /* 309769.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 309769.mp3; sourceTree = "<group>"; };
 		E060E2D41D1C1679009CFC06 /* 339744.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 339744.mp3; sourceTree = "<group>"; };
 		E060E2D51D1C1679009CFC06 /* Musics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Musics.plist; sourceTree = "<group>"; };
-		E060E2FF1D1C24AD009CFC06 /* PlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
+		E060E2FF1D1C24AD009CFC06 /* PlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayingViewController.swift; path = ../View/PlayingViewController.swift; sourceTree = "<group>"; };
+		E060E3011D1C2E98009CFC06 /* MusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		E060E3031D1C31E7009CFC06 /* MusicTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTool.swift; sourceTree = "<group>"; };
+		E060E3051D1C40BC009CFC06 /* MusicPlayerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicPlayerTool\b.swift"; sourceTree = "<group>"; };
+		E060E3071D1D912E009CFC06 /* CALayer-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer-Extension.swift"; sourceTree = "<group>"; };
+		E060E3091D1E6E59009CFC06 /* LrcScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LrcScrollView.swift; sourceTree = "<group>"; };
+		E060E30B1D1E7A9F009CFC06 /* Lrcline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lrcline.swift; sourceTree = "<group>"; };
+		E060E30D1D1E829C009CFC06 /* LrcTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LrcTool.swift; sourceTree = "<group>"; };
+		E060E30F1D201F79009CFC06 /* LrcViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LrcViewCell.swift; sourceTree = "<group>"; };
+		E060E3111D201FEF009CFC06 /* LrcLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LrcLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,10 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				E060E2A91D1C1679009CFC06 /* Resources */,
-				E060E2A31D1C145A009CFC06 /* Controller */,
 				E060E2A41D1C145A009CFC06 /* Model */,
-				E060E2A51D1C145A009CFC06 /* Tools */,
 				E060E2A61D1C145A009CFC06 /* View */,
+				E060E2A31D1C145A009CFC06 /* Controller */,
+				E060E2A51D1C145A009CFC06 /* Tools */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -161,6 +179,7 @@
 		E060E2A31D1C145A009CFC06 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E060E2FF1D1C24AD009CFC06 /* PlayingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +187,8 @@
 		E060E2A41D1C145A009CFC06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E060E3011D1C2E98009CFC06 /* MusicModel.swift */,
+				E060E30B1D1E7A9F009CFC06 /* Lrcline.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +196,10 @@
 		E060E2A51D1C145A009CFC06 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E060E3031D1C31E7009CFC06 /* MusicTool.swift */,
+				E060E3051D1C40BC009CFC06 /* MusicPlayerTool.swift */,
+				E060E3071D1D912E009CFC06 /* CALayer-Extension.swift */,
+				E060E30D1D1E829C009CFC06 /* LrcTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -182,7 +207,9 @@
 		E060E2A61D1C145A009CFC06 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E060E2FF1D1C24AD009CFC06 /* PlayingViewController.swift */,
+				E060E3091D1E6E59009CFC06 /* LrcScrollView.swift */,
+				E060E30F1D201F79009CFC06 /* LrcViewCell.swift */,
+				E060E3111D201FEF009CFC06 /* LrcLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,7 +318,6 @@
 				TargetAttributes = {
 					E060E28C1D1C13E2009CFC06 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 27986QXT7Y;
 					};
 				};
 			};
@@ -372,8 +398,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E060E30E1D1E829C009CFC06 /* LrcTool.swift in Sources */,
 				E060E2911D1C13E2009CFC06 /* AppDelegate.swift in Sources */,
+				E060E30C1D1E7A9F009CFC06 /* Lrcline.swift in Sources */,
+				E060E30A1D1E6E59009CFC06 /* LrcScrollView.swift in Sources */,
+				E060E3101D201F79009CFC06 /* LrcViewCell.swift in Sources */,
+				E060E3061D1C40BC009CFC06 /* MusicPlayerTool.swift in Sources */,
+				E060E3041D1C31E7009CFC06 /* MusicTool.swift in Sources */,
+				E060E3121D201FEF009CFC06 /* LrcLabel.swift in Sources */,
+				E060E3081D1D912E009CFC06 /* CALayer-Extension.swift in Sources */,
 				E060E3001D1C24AD009CFC06 /* PlayingViewController.swift in Sources */,
+				E060E3021D1C2E98009CFC06 /* MusicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QQMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zs.QQMusic;
@@ -499,6 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QQMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zs.QQMusic;
@@ -525,6 +562,7 @@
 				E060E2A11D1C13E2009CFC06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
