@@ -92,7 +92,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="player_btn_pre_normal"/>
                                         <connections>
-                                            <action selector="previousMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FaR-o4-fLA"/>
+                                            <action selector="previousMusic" destination="BYZ-38-t0r" eventType="touchUpInside" id="7L2-FW-LIs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKA-a0-5El" userLabel="下一首">
@@ -103,7 +103,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="player_btn_next_normal"/>
                                         <connections>
-                                            <action selector="nextMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGn-tB-iJN"/>
+                                            <action selector="nextMusic" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Y0-h5-lz4"/>
                                         </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SUW-Y7-pNi">
@@ -223,8 +223,9 @@
                         <outlet property="bgImageView" destination="3nb-jG-gZl" id="6Rj-IZ-BSE"/>
                         <outlet property="currentTimeLabel" destination="Xdg-68-wVq" id="sx6-74-a1N"/>
                         <outlet property="iconView" destination="bK0-5T-8dQ" id="TnK-Md-JVg"/>
-                        <outlet property="lrcLabel" destination="xxt-zj-yks" id="y5h-0V-cd5"/>
+                        <outlet property="lrcLabel" destination="xxt-zj-yks" id="cNk-zL-d5D"/>
                         <outlet property="lrcScrollView" destination="2Ad-Se-yOB" id="VhV-DZ-nxr"/>
+                        <outlet property="playOrPauseBtn" destination="ltd-nc-99f" id="RxM-ZJ-5TG"/>
                         <outlet property="progressView" destination="SUW-Y7-pNi" id="EMj-fe-qrM"/>
                         <outlet property="singerLabel" destination="b2I-er-SmT" id="Tad-zQ-tjT"/>
                         <outlet property="songLabel" destination="wW0-q0-krn" id="SSV-wU-aLs"/>

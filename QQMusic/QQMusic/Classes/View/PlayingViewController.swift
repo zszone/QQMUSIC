@@ -8,7 +8,9 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
+private let IconViewAnim = "IconViewAnim"
 class PlayingViewController: UIViewController {
 // MARK:- 定义属性
     weak var player : AVAudioPlayer?
@@ -16,6 +18,7 @@ class PlayingViewController: UIViewController {
     var lrcTimer : CADisplayLink?
     
     
+    @IBOutlet weak var playOrPauseBtn: UIButton!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var progressView: UISlider!
     @IBOutlet weak var songLabel: UILabel!
@@ -24,8 +27,8 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var lrcScrollView: LrcScrollView!
-    @IBOutlet weak var lrcLabel: UILabel!
     
+    @IBOutlet weak var lrcLabel: LrcLabel!
     
     
     override func viewDidLoad() {
@@ -36,7 +39,7 @@ class PlayingViewController: UIViewController {
         
         //2.设置歌词的lrcScrollView的滚动区域
         lrcScrollView.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 2, 0)
-        
+        lrcScrollView.lrcDelegate = self
         
     }
     
@@ -106,19 +109,30 @@ extension PlayingViewController {
         }
         
         self.player = player
+        self.player?.delegate = self
+        
         //4.讲歌词文件的名字传递给lrcScrollView
         lrcScrollView.lrcfileName = currentMusic.lrcname
         
+        // 5.添加动画
+        if  iconView.layer.animationForKey(IconViewAnim) != nil {
+            iconView.layer.removeAnimationForKey(IconViewAnim)
+        }
+        addIconViewAnimation()
         
         //4.显示总时长
         totalTimeLabel.text = timeStringWithTime(player.duration)
         
         // 5.添加进度条定时器
+        removeProgressTime()
         addProgressTimer()
         
         //6.添加定时器
+        removeLrcTimer()
         addLrcTimer()
         
+        //7.设置该歌曲的锁屏界面信息
+        setupLockScreenInfo(UIImage(named: currentMusic.icon)!)
   
         
     }
@@ -167,6 +181,13 @@ extension PlayingViewController {
         //更新进度
         updateProgressInfo()
         
+        
+        //添加定时器
+        if progressTimer == nil {
+           
+            addProgressTimer()
+            
+        }
     }
 
 }
@@ -190,13 +211,13 @@ extension PlayingViewController {
         }
     }
     
-    @IBAction func previousMusic(sender: UIButton) {
+    @IBAction func previousMusic() {
         let previousMusic = MusicTool.getPreviousMusic()
         MusicTool.currentMusic = previousMusic
         startPlayingMusic()
     }
     
-    @IBAction func nextMusic(sender: UIButton) {
+    @IBAction func nextMusic() {
         let nextMusic = MusicTool.getNextMusic()
         MusicTool.currentMusic = nextMusic
         startPlayingMusic()
@@ -252,7 +273,7 @@ extension PlayingViewController {
 }
 
 // MARK:- 实现中间歌词view的滚动代理方法
-extension PlayingViewController : UIScrollViewDelegate{
+extension PlayingViewController : UIScrollViewDelegate, lrcScrollViewDelegate{
   
     func scrollViewDidScroll(scrollView : UIScrollView) {
         //获取偏移量
@@ -261,17 +282,84 @@ extension PlayingViewController : UIScrollViewDelegate{
         //计算比例
         let ratio = offsetx / scrollView.bounds.width
         
+        //设置iconView的透明度
         iconView.alpha = 1 - ratio
         
         lrcLabel.alpha = 1 - ratio
         
     }
     
+    func lrcScrollView(lrcView : LrcScrollView, currentLrcText : String ,lrcImage: UIImage?){
+       lrcLabel.text = currentLrcText
+        
+        if let lrcImage = lrcImage {
+            setupLockScreenInfo(lrcImage)
+        }
+    }
+
+    
+    
+    
+    func lrcScrollView(lrcView : LrcScrollView, progress : Double){
+       lrcLabel.progress = progress
+    }
+    
+}
+
+extension PlayingViewController : AVAudioPlayerDelegate {
+  
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        nextMusic()
+    }
+
+    
 }
 
 
+// MARK:- 设置锁屏界面
+extension PlayingViewController {
+  
+    private func setupLockScreenInfo(lrcImage : UIImage) {
+    
+        //获取当前歌词
+        guard let currentMusic = MusicTool.currentMusic else {
+          return
+        }
+        
+       //2.获取播放信息中心
+        let center = MPNowPlayingInfoCenter.defaultCenter()
+        
+        //3.设置中心的内容
+        var infoDict = [String : AnyObject]()
+        infoDict[MPMediaItemPropertyTitle] = currentMusic.name
+        infoDict[MPMediaItemPropertyArtist] = currentMusic.singer
+        infoDict[MPMediaItemPropertyPlaybackDuration] = player?.duration ?? 0
+        infoDict[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image : lrcImage)
+        center.nowPlayingInfo = infoDict
+        // 3.让应用程序可以接受远程事件
+        UIApplication.sharedApplication().canBecomeFirstResponder()
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+    }
+    
+    
+    override func remoteControlReceivedWithEvent(event: UIEvent?) {
+        guard let event = event else {
+            return
+        }
+        
+        switch event.subtype {
+        case .RemoteControlNextTrack:
+            nextMusic()
+        case .RemoteControlPreviousTrack:
+            previousMusic()
+        case .RemoteControlPlay, .RemoteControlPause:
+            playOrPauseBtnClick(playOrPauseBtn)
+        default:
+            print("其它事件")
+        }
+    }
 
-
+}
 
 
 

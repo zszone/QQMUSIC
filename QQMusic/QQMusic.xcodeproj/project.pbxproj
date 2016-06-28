@@ -318,6 +318,12 @@
 				TargetAttributes = {
 					E060E28C1D1C13E2009CFC06 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 27986QXT7Y;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -524,6 +530,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QQMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zs.QQMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,6 +544,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QQMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zs.QQMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";

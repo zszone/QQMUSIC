@@ -15,7 +15,6 @@ class MusicPlayerTool: NSObject {
     
 }
 
-
 extension MusicPlayerTool {
  
     class func playMusicWithName(musicName : String) -> AVAudioPlayer? {

@@ -13,8 +13,7 @@ class LrcLabel: UILabel {
     var progress : Double = 0 {
         didSet {
         
-              setNeedsDisplay()
-            
+            setNeedsDisplayInRect(self.bounds)
         }
     }
 
